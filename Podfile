@@ -3,6 +3,7 @@
 
 target 'ParseChat' do
   pod "Parse"
+  pod "ParseFacebookUtils"
 end
 
 target 'ParseChatTests' do
