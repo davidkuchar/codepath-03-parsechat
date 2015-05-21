@@ -24,8 +24,12 @@ class ChatViewController: UIViewController {
         
         let chatMessage = chatMessageField.text
         
+        var currentUser:PFUser = PFUser.currentUser()!
+
         var message = PFObject(className:"Message")
         message["text"] = chatMessage
+        message["user"] = currentUser
+        
         message.saveInBackgroundWithBlock {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
