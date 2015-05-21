@@ -10,6 +10,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,7 +25,7 @@ class LoginViewController: UIViewController {
     @IBAction func onLogin(sender: AnyObject) {
         
         // Do any additional setup after loading the view.
-        PFUser.logInWithUsernameInBackground("justin", password:"Password1") {
+        PFUser.logInWithUsernameInBackground(emailField.text, password:passwordField.text) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 // Do stuff after successful login.
@@ -38,19 +41,21 @@ class LoginViewController: UIViewController {
     @IBAction func onSignUp(sender: AnyObject) {
         
         var user = PFUser()
-        user.username = "justin"
-        user.password = "Password1"
-        user.email = "aschenbener@gmail.com"
+        user.username = emailField.text
+        user.password = passwordField.text
+        user.email = emailField.text
         // other fields can be set just like with PFObject
-        user["phone"] = "440-503-0535"
+//        user["phone"] = "440-503-0535"
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
             if let error = error {
                 let errorString = error.userInfo?["error"] as? NSString
                 // Show the errorString somewhere and let the user try again.
+                NSLog("error signing up with parse \(errorString)")
             } else {
                 // Hooray! Let them use the app now.
+                NSLog("success sign up with parse")
             }
         }
         

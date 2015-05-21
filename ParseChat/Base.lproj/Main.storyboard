@@ -59,6 +59,10 @@
                             <constraint firstAttribute="centerX" secondItem="DvF-mN-t6I" secondAttribute="centerX" id="cu7-84-RLZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="5GK-6U-DFQ" id="7z8-YF-Erc"/>
+                        <outlet property="passwordField" destination="sGE-MZ-mf8" id="Vua-O0-KIw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
