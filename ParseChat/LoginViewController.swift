@@ -30,6 +30,9 @@ class LoginViewController: UIViewController {
             if user != nil {
                 // Do stuff after successful login.
                 NSLog("successful login with parse")
+                
+                self.performSegueWithIdentifier("loginSegue", sender: self)
+
             } else {
                 // The login failed. Check error to see why.
                 NSLog("failure on login with parse")
